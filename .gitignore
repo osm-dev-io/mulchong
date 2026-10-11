@@ -7,3 +7,4 @@
 **/__pycache__/
 site/dist/
 mulchong-static.zip
+site/.openai/hosting.json

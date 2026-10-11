@@ -4,6 +4,13 @@ const heroCarousel = document.querySelector('[data-hero-carousel]');
 if (heroCarousel) {
   const heroTrack = heroCarousel.querySelector('[data-hero-track]');
   const heroSlides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
+  function setHeroAspectRatio(index) {
+    const image = heroSlides[index]?.querySelector('img');
+    const width = Number(image?.getAttribute('width')) || image?.naturalWidth;
+    const height = Number(image?.getAttribute('height')) || image?.naturalHeight;
+    if (width && height) heroCarousel.style.setProperty('--hero-aspect-ratio', `${width} / ${height}`);
+  }
+  setHeroAspectRatio(0);
   const firstClone = heroSlides[0].cloneNode(true);
   const lastClone = heroSlides[heroSlides.length - 1].cloneNode(true);
   [firstClone, lastClone].forEach((slide) => {
@@ -40,6 +47,7 @@ if (heroCarousel) {
       pendingReset = null;
     }
 
+    setHeroAspectRatio(activeHeroSlide);
     isAnimating = true;
     heroTrack.style.transform = `translateX(-${trackIndex * 100}%)`;
     heroSlides.forEach((slide, slideIndex) => {
@@ -110,10 +118,6 @@ document.addEventListener('click', (event) => {
 window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
   if (event.matches) closeNav();
 });
-
-const topButton = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => { topButton.hidden = window.scrollY < 500; }, { passive: true });
-topButton?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }));
 
 const filterBar = document.querySelector('.filter-bar');
 if (filterBar) {

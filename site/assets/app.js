@@ -1,0 +1,180 @@
+'use strict';
+
+const heroCarousel = document.querySelector('[data-hero-carousel]');
+if (heroCarousel) {
+  const heroTrack = heroCarousel.querySelector('[data-hero-track]');
+  const heroSlides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
+  const firstClone = heroSlides[0].cloneNode(true);
+  const lastClone = heroSlides[heroSlides.length - 1].cloneNode(true);
+  [firstClone, lastClone].forEach((slide) => {
+    slide.removeAttribute('data-hero-slide');
+    slide.setAttribute('aria-hidden', 'true');
+    slide.setAttribute('inert', '');
+  });
+  heroTrack.prepend(lastClone);
+  heroTrack.append(firstClone);
+  heroTrack.style.transition = 'none';
+  heroTrack.style.transform = 'translateX(-100%)';
+  void heroTrack.offsetWidth;
+  heroTrack.style.removeProperty('transition');
+
+  let activeHeroSlide = 0;
+  let isAnimating = false;
+  let pendingReset = null;
+
+  function showHeroSlide(index) {
+    if (isAnimating) return;
+
+    let trackIndex;
+    if (index < 0) {
+      activeHeroSlide = heroSlides.length - 1;
+      trackIndex = 0;
+      pendingReset = heroSlides.length;
+    } else if (index >= heroSlides.length) {
+      activeHeroSlide = 0;
+      trackIndex = heroSlides.length + 1;
+      pendingReset = 1;
+    } else {
+      activeHeroSlide = index;
+      trackIndex = activeHeroSlide + 1;
+      pendingReset = null;
+    }
+
+    isAnimating = true;
+    heroTrack.style.transform = `translateX(-${trackIndex * 100}%)`;
+    heroSlides.forEach((slide, slideIndex) => {
+      const active = slideIndex === activeHeroSlide;
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.toggleAttribute('inert', !active);
+    });
+  }
+
+  heroTrack.addEventListener('transitionend', (event) => {
+    if (event.target !== heroTrack || event.propertyName !== 'transform') return;
+    if (pendingReset !== null) {
+      heroTrack.style.transition = 'none';
+      heroTrack.style.transform = `translateX(-${pendingReset * 100}%)`;
+      void heroTrack.offsetWidth;
+      heroTrack.style.removeProperty('transition');
+      pendingReset = null;
+    }
+    isAnimating = false;
+  });
+
+  heroCarousel.querySelector('[data-hero-prev]').addEventListener('click', () => showHeroSlide(activeHeroSlide - 1));
+  heroCarousel.querySelector('[data-hero-next]').addEventListener('click', () => showHeroSlide(activeHeroSlide + 1));
+  heroCarousel.addEventListener('keydown', (event) => {
+    if (event.target.closest('a, input, textarea, select, [contenteditable="true"]')) return;
+    if (event.key === 'ArrowLeft') { event.preventDefault(); showHeroSlide(activeHeroSlide - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); showHeroSlide(activeHeroSlide + 1); }
+  });
+
+  let swipeStart = null;
+  heroCarousel.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' || event.target.closest('a, button')) return;
+    swipeStart = { x: event.clientX, y: event.clientY };
+  });
+  heroCarousel.addEventListener('pointerup', (event) => {
+    if (!swipeStart) return;
+    const dx = event.clientX - swipeStart.x;
+    const dy = event.clientY - swipeStart.y;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) showHeroSlide(activeHeroSlide + (dx < 0 ? 1 : -1));
+    swipeStart = null;
+  });
+  heroCarousel.addEventListener('pointercancel', () => { swipeStart = null; });
+}
+
+const toggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('#mobile-nav');
+function closeNav() {
+  if (!toggle || !mobileNav) return;
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', '메뉴 열기');
+  mobileNav.hidden = true;
+}
+toggle?.addEventListener('click', () => {
+  const open = toggle.getAttribute('aria-expanded') !== 'true';
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  mobileNav.hidden = !open;
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+    closeNav();
+    toggle.focus();
+  }
+});
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.site-header')) closeNav();
+});
+window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+  if (event.matches) closeNav();
+});
+
+const topButton = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => { topButton.hidden = window.scrollY < 500; }, { passive: true });
+topButton?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }));
+
+const filterBar = document.querySelector('.filter-bar');
+if (filterBar) {
+  const isMedia = document.body.dataset.page === 'media';
+  const cards = [...document.querySelectorAll(isMedia ? '.media-card' : '.catalog-card')];
+  const liveResult = document.querySelector('.filter-result');
+  function applyFilter(button) {
+    const category = button.dataset.filter;
+    filterBar.querySelectorAll('.filter-button').forEach((item) => {
+      const active = item === button;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    let count = 0;
+    cards.forEach((card) => {
+      const visible = category === 'all' || card.dataset.category === category;
+      card.hidden = !visible;
+      if (visible) count++;
+    });
+    if (liveResult) liveResult.textContent = `${button.textContent.trim()} ${count}개`;
+    if (isMedia) {
+      document.querySelector('.media-empty').hidden = count > 0;
+      document.querySelector('.media-grid').hidden = count === 0;
+    }
+  }
+  filterBar.addEventListener('click', (event) => {
+    const button = event.target.closest('.filter-button');
+    if (button) applyFilter(button);
+  });
+  document.querySelector('[data-show-channels]')?.addEventListener('click', () => {
+    const button = filterBar.querySelector('[data-filter="channel"]');
+    applyFilter(button);
+    button.focus();
+  });
+}
+
+const storeSearch = document.querySelector('.store-search');
+if (storeSearch) {
+  const query = document.querySelector('#store-query');
+  const region = document.querySelector('#region');
+  const stores = [...document.querySelectorAll('.store-card')];
+  function searchStores() {
+    const term = query.value.trim().toLocaleLowerCase('ko-KR').replace(/\s+/g, '');
+    let count = 0;
+    stores.forEach((store) => {
+      const regionMatches = region.value === 'all' || store.dataset.region === region.value;
+      const textMatches = store.dataset.search.toLocaleLowerCase('ko-KR').replace(/\s+/g, '').includes(term);
+      store.hidden = !regionMatches || !textMatches;
+      if (!store.hidden) count++;
+    });
+    document.querySelector('.store-count').textContent = count;
+    document.querySelector('.store-result-status').textContent = `검색 결과 ${count}개 매장`;
+    document.querySelector('.store-empty').hidden = count > 0;
+  }
+  storeSearch.addEventListener('submit', (event) => { event.preventDefault(); searchStores(); });
+  query.addEventListener('input', searchStores);
+  region.addEventListener('change', searchStores);
+  document.querySelector('[data-reset-search]').addEventListener('click', () => {
+    query.value = '';
+    region.value = 'all';
+    searchStores();
+    query.focus();
+  });
+}

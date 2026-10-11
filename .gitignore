@@ -1,0 +1,9 @@
+# Local and generated files
+.DS_Store
+.playwright-mcp/
+**/.sites-runtime/
+**/.env
+**/node_modules/
+**/__pycache__/
+site/dist/
+mulchong-static.zip

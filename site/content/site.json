@@ -1,0 +1,126 @@
+{
+  "brand": "물총칼국수",
+  "phone": "0507-1336-6701",
+  "address": "충남 천안시 동남구 원성2교길 19-1",
+  "naver": "https://naver.me/FMcgUGDz",
+  "instagram": "https://www.instagram.com/watergun6700/",
+  "facebook": "https://www.facebook.com/물총-칼국수-102014265439797/",
+  "franchise": {
+    "phone": "1551-6956",
+    "email": null
+  },
+  "menus": [
+    {
+      "id": "kalguksu",
+      "name": "물총칼국수",
+      "english": "CLAM KALGUKSU",
+      "category": "meal",
+      "tag": "대표 메뉴",
+      "price": "10,000",
+      "image": "kalguksu.jpg",
+      "description": "동죽, 바지락, 홍합의 시원한 국물에 쫄깃한 면을 더한 물총칼국수의 대표 메뉴.",
+      "note": "2인분부터 주문 가능"
+    },
+    {
+      "id": "pajeon",
+      "name": "해물파전",
+      "english": "SEAFOOD PAJEON",
+      "category": "side",
+      "tag": "함께 즐기는 맛",
+      "price": "15,000",
+      "image": "pajeon.jpg",
+      "description": "오징어와 굴을 넣어 노릇하게 부친 파전. 시원한 칼국수와 함께 즐겨보세요.",
+      "note": "굴 제외 가능 · 주문 시 말씀해 주세요"
+    },
+    {
+      "id": "suyuk",
+      "name": "강황수육",
+      "english": "TURMERIC SUYUK",
+      "category": "side",
+      "tag": "곁들임 메뉴",
+      "price": "28,000",
+      "image": "suyuk.jpg",
+      "description": "강황을 더해 삶아낸 수육. 담백한 맛과 쫄깃한 식감을 함께 즐겨보세요.",
+      "note": "중 28,000원 · 대 40,000원"
+    },
+    {
+      "id": "sundae",
+      "name": "속초오징어순대",
+      "english": "SQUID SUNDAE",
+      "category": "side",
+      "tag": "곁들임 메뉴",
+      "price": "18,000",
+      "image": null,
+      "description": "오징어 안에 속을 채워 만든 순대. 칼국수 한 상에 든든함을 더합니다.",
+      "note": "대 기준"
+    },
+    {
+      "id": "tang",
+      "name": "물총탕",
+      "english": "CLAM SOUP",
+      "category": "side",
+      "tag": "곁들임 메뉴",
+      "price": "24,000",
+      "image": "clams.jpg",
+      "description": "동죽, 바지락, 홍합의 깊고 시원한 맛을 국수 없이 즐기는 조개탕.",
+      "note": "국수 미포함"
+    },
+    {
+      "id": "kongguksu",
+      "name": "검은콩국수",
+      "english": "BLACK SOYBEAN NOODLES",
+      "category": "seasonal",
+      "tag": "여름 한정",
+      "price": "10,000",
+      "image": null,
+      "description": "고소한 검은콩 국물로 시원하게 즐기는 여름 별미.",
+      "note": "판매 기간은 매장에 문의해 주세요"
+    }
+  ],
+  "stores": [
+    {
+      "name": "천안 본점",
+      "type": "본점",
+      "region": "충청남도",
+      "address": "충남 천안시 동남구 원성2교길 19-1",
+      "phone": "0507-1336-6701",
+      "hours": "11:00–21:00",
+      "break": "평일 15:30–16:30",
+      "lastOrder": "20:00",
+      "closed": "매주 화요일",
+      "facilities": [
+        "주차",
+        "단체 이용",
+        "포장",
+        "유아의자"
+      ],
+      "url": "https://naver.me/FMcgUGDz"
+    }
+  ],
+  "media": [
+    {
+      "category": "channel",
+      "label": "공식 채널",
+      "platform": "INSTAGRAM",
+      "title": "물총칼국수의 일상을 만나보세요",
+      "description": "메뉴와 매장의 이야기를 공식 인스타그램에서 전합니다.",
+      "url": "https://www.instagram.com/watergun6700/"
+    },
+    {
+      "category": "channel",
+      "label": "공식 채널",
+      "platform": "NAVER PLACE",
+      "title": "방문 전, 가장 새로운 매장 소식",
+      "description": "영업 안내와 메뉴, 방문 정보를 네이버 플레이스에서 확인하세요.",
+      "url": "https://naver.me/FMcgUGDz"
+    },
+    {
+      "category": "channel",
+      "label": "공식 채널",
+      "platform": "FACEBOOK",
+      "title": "한 그릇에 담긴 물총칼국수 이야기",
+      "description": "물총칼국수의 페이스북 채널을 만나보세요.",
+      "url": "https://www.facebook.com/물총-칼국수-102014265439797/"
+    }
+  ]
+}

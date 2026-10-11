@@ -1,0 +1,11 @@
+{
+  "name": "mulchong-kalguksu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "물총칼국수 정적 브랜드 웹사이트",
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "dev": "node scripts/serve.mjs",
+    "check": "python3 scripts/check.py"
+  }
+}

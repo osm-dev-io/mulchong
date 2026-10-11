@@ -24,14 +24,26 @@
   <main id="main">$body</main>
   <footer class="site-footer">
     <div class="container footer-top">
-      <a class="wordmark" href="index.html" aria-label="물총칼국수 홈"><span class="wordmark-ko">물총<span>칼국수</span></span><span class="wordmark-en">MULCHONG KALGUKSU</span></a>
+      <a class="wordmark" href="index.html" aria-label="물총칼국수 홈"><span class="wordmark-ko">물총<span>칼국수</span></span></a>
       <nav aria-label="푸터 메뉴" class="footer-nav">$footer_navigation</nav>
     </div>
     <div class="container footer-bottom">
-      <div><p>물총칼국수 본점</p><address>$address</address><p class="footer-contact">가맹 문의 <a href="tel:$franchise_phone_plain">$franchise_phone</a></p></div>
-      <div class="footer-right"><div class="social-links"><a href="$instagram" target="_blank" rel="noopener noreferrer">Instagram</a><a href="$naver" target="_blank" rel="noopener noreferrer">Naver Place</a></div><p class="copyright">© $year MULCHONG KALGUKSU. All rights reserved.</p></div>
+      <dl class="footer-company-info">
+        <div><dt>상호명</dt><dd>주식회사 엠케이</dd></div>
+        <div><dt>대표자</dt><dd>김윤환</dd></div>
+        <div><dt>사업자등록번호</dt><dd>234-87-03969</dd></div>
+        <div><dt>주소</dt><dd>충청남도 천안시 동남구 원성2교길 19-1 (원성동)</dd></div>
+      </dl>
+      <div class="footer-right"><div class="social-links">
+        <a class="social-icon social-icon-instagram" href="$instagram" target="_blank" rel="noopener noreferrer" aria-label="인스타그램 공식 계정">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.6" r="1.2" fill="currentColor"/></svg>
+        </a>
+        <a class="social-icon social-icon-naver" href="$naver" target="_blank" rel="noopener noreferrer" aria-label="네이버 플레이스">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="naver-n-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect x="2.25" y="2.25" width="19.5" height="19.5" rx="4.25" fill="white"/><path d="M7.7 16.3V7.7h2.7l3.2 4.3V7.7h2.7v8.6h-2.7l-3.2-4.3v4.3z" fill="black"/></mask></defs><rect x="2.25" y="2.25" width="19.5" height="19.5" rx="4.25" fill="currentColor" mask="url(#naver-n-cutout)"/></svg>
+        </a>
+      </div></div>
     </div>
+    <div class="container footer-copyright">© $year 주식회사 엠케이. All rights reserved.</div>
   </footer>
-  <button class="back-to-top" aria-label="페이지 맨 위로" hidden>TOP</button>
 </body>
 </html>

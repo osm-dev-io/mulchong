@@ -37,6 +37,14 @@
 - `assets/suyuk.jpg`: https://dnvefa72aowie.cloudfront.net/business-profile/bizPlatform/profile/44377527/1642064692698/07c0347801abe355d146926e0c1eab527f9ba85285c35f4784c7a3562ecb673e.jpeg
 - `assets/pajeon.jpg`: https://dnvefa72aowie.cloudfront.net/business-profile/bizPlatform/profile/44377527/1642064692744/e724d3292058a215582b62492a18e9495624600780bdb903e46d4b434b554479.jpeg
 
+- `assets/kalguksu-hero.png`: OpenAI 이미지 생성 도구로 제작한 칼국수 연출 이미지 (2026-10-11). 실제 판매 메뉴 사진이 아닌 시각적 연출용 이미지입니다.
+- `assets/home-hero-kalguksu.jpg`: 사용자가 제공한 히어로용 칼국수 이미지.
+- `assets/home-hero-award.jpg`: 사용자가 제공한 히어로용 수상 안내·칼국수 합성 이미지.
+- `assets/kalguksu-menu-hero.jpg`: 사용자가 제공한 칼국수 메뉴 이미지.
+- `assets/pajeon-menu-hero.jpg`: 사용자가 제공한 해물파전 메뉴 이미지.
+- `assets/suyuk-menu-hero.jpg`: 사용자가 제공한 강황수육 메뉴 이미지.
+- `assets/award-kal.png`: 사용자가 제공한 히어로용 수상 안내·칼국수 이미지.
+
 ## 언론·미디어
 
 공식 언론 보도 및 방송 출연 자료는 확인하지 못했습니다. 특정 방송 출연·수상 실적 등을 만들지 않고 공식 채널만 표시했습니다. 언론/방송 필터에는 빈 목록 안내가 표시됩니다.

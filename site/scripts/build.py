@@ -19,8 +19,8 @@ PAGES = {
 def menu_card(item, preview=False):
     image = f'<img src="assets/{escape(item["image"])}" width="1080" height="1080" loading="lazy" alt="물총칼국수 본점의 {escape(item["name"])}">' if item['image'] else ''
     if preview:
-        return f'''<a class="menu-card preview-card" href="menu.html#{item['id']}"><div class="menu-image">{image}<span class="menu-badge">{escape(item['tag'])}</span></div><div class="menu-card-body"><span class="small-label">{escape(item['english'])}</span><h3>{escape(item['name'])}</h3><p>{escape(item['description'])}</p></div></a>'''
-    photo = f'<div class="menu-image">{image}<span class="menu-badge">{escape(item["tag"])}</span></div>' if image else ''
+        return f'''<a class="menu-card preview-card" href="menu.html#{item['id']}"><div class="menu-image">{image}</div><div class="menu-card-body"><h3>{escape(item['name'])}</h3><p>{escape(item['description'])}</p></div></a>'''
+    photo = f'<div class="menu-image">{image}</div>' if image else ''
     return f'''<article id="{item['id']}" class="menu-card catalog-card {'text-menu' if not image else ''}" data-category="{item['category']}">{photo}<div class="menu-card-body"><span class="small-label">{escape(item['english'])}</span><div class="menu-title"><h2>{escape(item['name'])}</h2><p class="price">{escape(item['price'])}<span>원</span></p></div><p>{escape(item['description'])}</p><p class="menu-note">{escape(item['note'])}</p></div></article>'''
 
 def store_cards():

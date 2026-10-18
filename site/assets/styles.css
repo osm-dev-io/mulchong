@@ -39,4 +39,24 @@
 .home-franchise-cta p:not(.eyebrow){margin-top:16px;color:var(--muted)}
 .home-franchise-cta .button{margin-top:30px}
 @media(max-width:640px){.home-franchise-cta h2{font-size:2rem}.home-franchise-cta p:not(.eyebrow){font-size:.9375rem}}
+.franchise-hero{padding:36px 0 76px;background:var(--white)}
+.franchise-hero-copy{max-width:850px;margin:54px auto 0;text-align:center}
+.franchise-hero-copy .eyebrow{margin-bottom:18px}
+.franchise-hero-copy h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.45}
+.franchise-hero-copy>p:not(.eyebrow){margin-top:20px;color:var(--muted);font-size:1.0625rem;line-height:1.9}
+.franchise-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
+.franchise-video-section{padding-top:70px}
+.franchise-video-heading{margin-bottom:32px;text-align:center}
+.franchise-video-heading .eyebrow{margin-bottom:14px}
+.franchise-video-heading h2,.franchise-inquiry-card h2{font-size:2.25rem}
+.franchise-video-frame{width:min(960px,100%);margin-inline:auto;aspect-ratio:16 / 9;overflow:hidden;background:#111;border:1px solid var(--line)}
+.franchise-video-frame iframe{display:block;width:100%;height:100%;border:0}
+.franchise-video-link{display:flex;width:max-content;align-items:center;gap:12px;margin:18px auto 0;color:var(--muted);font-size:.875rem}
+.franchise-video-link:hover{color:var(--ink)}
+.franchise-inquiry-section{padding-block:56px;background:var(--mist)}
+.franchise-inquiry-card{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.franchise-inquiry-card .eyebrow{margin-bottom:10px}
+.franchise-inquiry-card h2{margin-bottom:8px}
+.franchise-inquiry-card p:not(.eyebrow){color:var(--muted)}
+@media(max-width:640px){.franchise-hero{padding:24px 0 55px}.franchise-hero-copy{margin-top:35px}.franchise-hero-copy h1{font-size:2.35rem}.franchise-hero-copy>p:not(.eyebrow){font-size:.9375rem}.franchise-hero-actions{flex-direction:column;align-items:stretch}.franchise-video-section{padding-top:50px}.franchise-video-heading{margin-bottom:24px}.franchise-video-heading h2,.franchise-inquiry-card h2{font-size:1.8rem}.franchise-inquiry-card{align-items:stretch;flex-direction:column;gap:20px}.franchise-inquiry-card .button{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}

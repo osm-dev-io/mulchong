@@ -2,6 +2,7 @@
 
 const heroCarousel = document.querySelector('[data-hero-carousel]');
 if (heroCarousel) {
+  (() => {
   const heroTrack = heroCarousel.querySelector('[data-hero-track]');
   const heroSlides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
   function setHeroAspectRatio(index) {
@@ -11,6 +12,7 @@ if (heroCarousel) {
     if (width && height) heroCarousel.style.setProperty('--hero-aspect-ratio', `${width} / ${height}`);
   }
   setHeroAspectRatio(0);
+  if (heroSlides.length < 2) return;
   const firstClone = heroSlides[0].cloneNode(true);
   const lastClone = heroSlides[heroSlides.length - 1].cloneNode(true);
   [firstClone, lastClone].forEach((slide) => {
@@ -90,6 +92,7 @@ if (heroCarousel) {
     swipeStart = null;
   });
   heroCarousel.addEventListener('pointercancel', () => { swipeStart = null; });
+  })();
 }
 
 const toggle = document.querySelector('.menu-toggle');
@@ -151,34 +154,5 @@ if (filterBar) {
     const button = filterBar.querySelector('[data-filter="channel"]');
     applyFilter(button);
     button.focus();
-  });
-}
-
-const storeSearch = document.querySelector('.store-search');
-if (storeSearch) {
-  const query = document.querySelector('#store-query');
-  const region = document.querySelector('#region');
-  const stores = [...document.querySelectorAll('.store-card')];
-  function searchStores() {
-    const term = query.value.trim().toLocaleLowerCase('ko-KR').replace(/\s+/g, '');
-    let count = 0;
-    stores.forEach((store) => {
-      const regionMatches = region.value === 'all' || store.dataset.region === region.value;
-      const textMatches = store.dataset.search.toLocaleLowerCase('ko-KR').replace(/\s+/g, '').includes(term);
-      store.hidden = !regionMatches || !textMatches;
-      if (!store.hidden) count++;
-    });
-    document.querySelector('.store-count').textContent = count;
-    document.querySelector('.store-result-status').textContent = `검색 결과 ${count}개 매장`;
-    document.querySelector('.store-empty').hidden = count > 0;
-  }
-  storeSearch.addEventListener('submit', (event) => { event.preventDefault(); searchStores(); });
-  query.addEventListener('input', searchStores);
-  region.addEventListener('change', searchStores);
-  document.querySelector('[data-reset-search]').addEventListener('click', () => {
-    query.value = '';
-    region.value = 'all';
-    searchStores();
-    query.focus();
   });
 }

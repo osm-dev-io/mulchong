@@ -19,16 +19,14 @@ PAGES = {
 def menu_card(item, preview=False):
     image = f'<img src="assets/{escape(item["image"])}" width="1080" height="1080" loading="lazy" alt="물총칼국수 본점의 {escape(item["name"])}">' if item['image'] else ''
     if preview:
-        return f'''<a class="menu-card preview-card" href="menu.html#{item['id']}"><div class="menu-image">{image}</div><div class="menu-card-body"><h3>{escape(item['name'])}</h3><p>{escape(item['description'])}</p></div></a>'''
+        return f'''<a class="menu-card preview-card" href="menu.html"><div class="menu-image">{image}</div><div class="menu-card-body"><h3>{escape(item['name'])}</h3><p>{escape(item['description'])}</p></div></a>'''
     photo = f'<div class="menu-image">{image}</div>' if image else ''
     return f'''<article id="{item['id']}" class="menu-card catalog-card {'text-menu' if not image else ''}" data-category="{item['category']}">{photo}<div class="menu-card-body"><span class="small-label">{escape(item['english'])}</span><div class="menu-title"><h2>{escape(item['name'])}</h2><p class="price">{escape(item['price'])}<span>원</span></p></div><p>{escape(item['description'])}</p><p class="menu-note">{escape(item['note'])}</p></div></article>'''
 
 def store_cards():
     cards = []
     for item in DATA['stores']:
-        facilities = ''.join(f'<span>{escape(v)}</span>' for v in item['facilities'])
-        phone = escape(item['phone'])
-        cards.append(f'''<article class="store-card" data-region="{escape(item['region'])}" data-search="{escape(item['name']+' '+item['address']+' '+item['region'])}"><div class="store-card-header"><span class="pill">{escape(item['type'])}</span><span class="small-label">CHEONAN</span></div><h2>물총칼국수 {escape(item['name'])}</h2><address>{escape(item['address'])}</address><dl class="store-details"><div><dt>영업시간</dt><dd>{escape(item['hours'])}<small>마지막 주문 {escape(item['lastOrder'])}</small></dd></div><div><dt>쉬는 시간</dt><dd>{escape(item['break'])}</dd></div><div><dt>정기휴무</dt><dd>{escape(item['closed'])}</dd></div><div><dt>전화번호</dt><dd><a href="tel:{phone.replace('-', '')}">{phone}</a></dd></div></dl><div class="facility-tags">{facilities}</div><div class="store-actions"><a class="button button-navy" href="{escape(item['url'])}" target="_blank" rel="noopener noreferrer">네이버 지도 보기</a><a class="button button-outline" href="tel:{phone.replace('-', '')}">매장 전화하기</a></div></article>''')
+        cards.append(f'''<article class="store-list-item"><div class="store-list-info"><h2>{escape(item['name'])}</h2></div><a class="store-list-link" href="{escape(item['url'])}" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 <span aria-hidden="true">↗</span></a></article>''')
     return ''.join(cards)
 
 def media_cards():

@@ -13,6 +13,16 @@
 
 본점 전화번호는 매장 문의용으로 표시하고, 가맹 상담 전화 1551-6956은 의뢰인이 제공한 번호로 안내합니다. 가맹 상담 이메일은 아직 제공되지 않았습니다.
 
+## 매장 링크
+
+아래 지점명과 네이버 지도 링크는 의뢰인이 제공했습니다.
+
+- 만석공원점: https://naver.me/GKU2N41g
+- 군포점: https://naver.me/5eUuKUDi
+- 융건릉점: https://naver.me/xuFM0v4h
+- 천안 본점: https://naver.me/FMcgUGDz
+- 남양주점: https://naver.me/GeUQ5cu8
+
 ## 메뉴
 
 [네이버 메뉴 목록](https://pcmap.place.naver.com/restaurant/17272058/menu/list)에서 2026-09-26 업데이트된 메뉴를 확인했습니다. 당근의 사업자 메뉴 소개로 최소 주문·재료 설명을 보완했습니다.
@@ -32,18 +42,13 @@
 
 동일 주소의 당근 비즈프로필 [사업자 게시물](https://www.daangn.com/kr/business-post/%EC%B2%9C%EC%95%88-%EB%A7%9B%EC%A7%91-%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD-%EB%B3%B8%EC%A0%90-%EB%AC%BC%EC%B4%9D%EC%B9%BC%EA%B5%AD%EC%88%98-%EC%9E%85%EB%8B%88%EB%8B%A4-bwgb8fukgmn5/) (2022-01-13)에서 확인한 실제 음식 사진을 시안에 사용했습니다. 방문자 리뷰 사진은 사용하지 않았습니다. 공개 재사용 라이선스나 별도 사용 허가 문구는 확인되지 않았으며, 당근 사업자 인증 배지 역시 확인되지 않았습니다. 의뢰인에게 사진의 권리 및 최종 사용 승인을 확인하고 공식 원본으로 교체해야 합니다.
 
-- `assets/clams.jpg`: 위 사업자 게시물의 조개탕 사진
-- `assets/kalguksu.jpg`: https://dnvefa72aowie.cloudfront.net/business-profile/bizPlatform/profile/44377527/1642064692678/46aa71f6758d8375b124e4cf7de5beb6f9f09956f8b9bcba876c82c07851d3bb.jpeg
-- `assets/suyuk.jpg`: https://dnvefa72aowie.cloudfront.net/business-profile/bizPlatform/profile/44377527/1642064692698/07c0347801abe355d146926e0c1eab527f9ba85285c35f4784c7a3562ecb673e.jpeg
-- `assets/pajeon.jpg`: https://dnvefa72aowie.cloudfront.net/business-profile/bizPlatform/profile/44377527/1642064692744/e724d3292058a215582b62492a18e9495624600780bdb903e46d4b434b554479.jpeg
-
-- `assets/kalguksu-hero.png`: OpenAI 이미지 생성 도구로 제작한 칼국수 연출 이미지 (2026-10-11). 실제 판매 메뉴 사진이 아닌 시각적 연출용 이미지입니다.
-- `assets/home-hero-kalguksu.jpg`: 사용자가 제공한 히어로용 칼국수 이미지.
-- `assets/home-hero-award.jpg`: 사용자가 제공한 히어로용 수상 안내·칼국수 합성 이미지.
-- `assets/kalguksu-menu-hero.jpg`: 사용자가 제공한 칼국수 메뉴 이미지.
-- `assets/pajeon-menu-hero.jpg`: 사용자가 제공한 해물파전 메뉴 이미지.
-- `assets/suyuk-menu-hero.jpg`: 사용자가 제공한 강황수육 메뉴 이미지.
-- `assets/award-kal.png`: 사용자가 제공한 히어로용 수상 안내·칼국수 이미지.
+- `assets/hero/kalguksu-hero.png`: OpenAI 이미지 생성 도구로 제작한 칼국수 연출 이미지 (2026-10-11). 실제 판매 메뉴 사진이 아닌 시각적 연출용 이미지입니다.
+- `assets/hero/home-hero-kalguksu.png`: OpenAI 이미지 생성 도구로 재구성한 히어로 이미지 (2026-10-18). 사용자가 제공한 칼국수 사진을 시각 참고로 사용했습니다.
+- `assets/hero/home-hero-award.jpg`: 사용자가 제공한 히어로용 수상 안내·칼국수 합성 이미지.
+- `assets/menus/kalguksu-menu-hero.jpg`: 사용자가 제공한 칼국수 메뉴 이미지.
+- `assets/menus/pajeon-menu-hero.jpg`: 사용자가 제공한 해물파전 메뉴 이미지.
+- `assets/menus/suyuk-menu-hero.jpg`: 사용자가 제공한 강황수육 메뉴 이미지.
+- `assets/hero/award-kal.png`: 사용자가 제공한 히어로용 수상 안내·칼국수 이미지.
 
 ## 언론·미디어
 

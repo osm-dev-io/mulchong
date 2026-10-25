@@ -79,21 +79,6 @@
   ],
   "stores": [
     {
-      "name": "만석공원점",
-      "type": "가맹점",
-      "url": "https://naver.me/GKU2N41g"
-    },
-    {
-      "name": "군포점",
-      "type": "가맹점",
-      "url": "https://naver.me/5eUuKUDi"
-    },
-    {
-      "name": "융건릉점",
-      "type": "가맹점",
-      "url": "https://naver.me/xuFM0v4h"
-    },
-    {
       "name": "천안 본점",
       "type": "본점",
       "region": "충청남도",
@@ -109,7 +94,40 @@
         "포장",
         "유아의자"
       ],
-      "url": "https://naver.me/FMcgUGDz"
+      "url": "https://naver.me/FMcgUGDz",
+      "images": [
+        "stores/cheonan-main-01.jpeg",
+        "stores/cheonan-main-02.jpeg",
+        "stores/cheonan-main-03.jpeg",
+        "stores/cheonan-main-04.jpeg"
+      ]
+    },
+    {
+      "name": "만석공원점",
+      "type": "가맹점",
+      "url": "https://naver.me/GKU2N41g",
+      "images": [
+        "stores/manseok-01.jpeg",
+        "stores/manseok-02.jpeg"
+      ]
+    },
+    {
+      "name": "군포점",
+      "type": "가맹점",
+      "url": "https://naver.me/5eUuKUDi",
+      "images": [
+        "stores/gunpo-01.jpeg",
+        "stores/gunpo-02.jpeg",
+        "stores/gunpo-03.jpeg"
+      ]
+    },
+    {
+      "name": "융건릉점",
+      "type": "가맹점",
+      "url": "https://naver.me/xuFM0v4h",
+      "images": [
+        "stores/yunggeonneung-01.jpeg"
+      ]
     },
     {
       "name": "남양주점",

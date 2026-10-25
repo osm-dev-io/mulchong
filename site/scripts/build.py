@@ -15,6 +15,7 @@ PAGES = {
     'media': ('언론 · 미디어', '언론 · 미디어 | 물총칼국수', '물총칼국수의 미디어 소개와 공식 채널 소식을 만나보세요.'),
     'franchise': ('가맹 문의', '가맹 문의 | 물총칼국수', '물총칼국수 가맹 상담 안내와 창업 준비 사항을 확인하세요.'),
 }
+NAV_PAGES = {slug: info for slug, info in PAGES.items() if slug != 'media'}
 
 def menu_card(item, preview=False):
     image = f'<img src="assets/{escape(item["image"])}" width="1080" height="1080" loading="lazy" alt="물총칼국수 본점의 {escape(item["name"])}">' if item['image'] else ''
@@ -29,7 +30,10 @@ def menu_feature_cards():
 def store_cards():
     cards = []
     for item in DATA['stores']:
-        cards.append(f'''<article class="store-list-item"><div class="store-list-info"><h2>{escape(item['name'])}</h2></div><a class="store-list-link" href="{escape(item['url'])}" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 <span aria-hidden="true">↗</span></a></article>''')
+        name = escape(item['name'])
+        photos = ''.join(f'<img src="assets/{escape(image)}" loading="lazy" alt="{name} 매장 사진 {index}">' for index, image in enumerate(item.get('images', []), 1))
+        gallery = f'<div class="store-photo-gallery" aria-label="{name} 사진">{photos}</div>' if photos else ''
+        cards.append(f'''<article class="store-list-item"><div class="store-list-top"><div class="store-list-info"><h2>{name}</h2></div><a class="store-list-link" href="{escape(item['url'])}" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 <span aria-hidden="true">↗</span></a></div>{gallery}</article>''')
     return ''.join(cards)
 
 def media_cards():
@@ -59,8 +63,8 @@ def build():
         path = ROOT / 'templates' / f'{page}.html'
         if not path.exists():
             continue
-        nav = ''.join(f'<a href="{slug}.html" class="nav-link {"active" if slug == page else ""} {"nav-cta" if slug == "franchise" else ""}"'+(' aria-current="page"' if slug == page else '')+f'>{info[0]}</a>' for slug, info in PAGES.items())
-        footer_nav = ''.join(f'<a href="{slug}.html">{info[0]}</a>' for slug, info in PAGES.items())
+        nav = ''.join(f'<a href="{slug}.html" class="nav-link {"active" if slug == page else ""} {"nav-cta" if slug == "franchise" else ""}"'+(' aria-current="page"' if slug == page else '')+f'>{info[0]}</a>' for slug, info in NAV_PAGES.items())
+        footer_nav = ''.join(f'<a href="{slug}.html">{info[0]}</a>' for slug, info in NAV_PAGES.items())
         body = Template(path.read_text()).substitute(values)
         rendered = base.substitute(**values, body=body, navigation=nav, footer_navigation=footer_nav, title=title, description=description, page=page)
         (OUT / f'{page}.html').write_text(rendered)

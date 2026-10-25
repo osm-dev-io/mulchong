@@ -42,12 +42,10 @@
 
 동일 주소의 당근 비즈프로필 [사업자 게시물](https://www.daangn.com/kr/business-post/%EC%B2%9C%EC%95%88-%EB%A7%9B%EC%A7%91-%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD-%EB%B3%B8%EC%A0%90-%EB%AC%BC%EC%B4%9D%EC%B9%BC%EA%B5%AD%EC%88%98-%EC%9E%85%EB%8B%88%EB%8B%A4-bwgb8fukgmn5/) (2022-01-13)에서 확인한 실제 음식 사진을 시안에 사용했습니다. 방문자 리뷰 사진은 사용하지 않았습니다. 공개 재사용 라이선스나 별도 사용 허가 문구는 확인되지 않았으며, 당근 사업자 인증 배지 역시 확인되지 않았습니다. 의뢰인에게 사진의 권리 및 최종 사용 승인을 확인하고 공식 원본으로 교체해야 합니다.
 
-- `assets/hero/kalguksu-hero.png`: OpenAI 이미지 생성 도구로 제작한 칼국수 연출 이미지 (2026-10-11). 실제 판매 메뉴 사진이 아닌 시각적 연출용 이미지입니다.
 - `assets/hero/home-hero-kalguksu.png`: OpenAI 이미지 생성 도구로 재구성한 히어로 이미지 (2026-10-18). 사용자가 제공한 칼국수 사진을 시각 참고로 사용했습니다.
 - `assets/hero/home-hero-award.jpg`: 사용자가 제공한 히어로용 수상 안내·칼국수 합성 이미지.
-- `assets/menus/kalguksu-menu-hero.jpg`: 사용자가 제공한 칼국수 메뉴 이미지.
-- `assets/menus/pajeon-menu-hero.jpg`: 사용자가 제공한 해물파전 메뉴 이미지.
-- `assets/menus/suyuk-menu-hero.jpg`: 사용자가 제공한 강황수육 메뉴 이미지.
+- `assets/menus/mulchong.png`, `assets/menus/pajeon.png`, `assets/menus/suyuk.png`, `assets/menus/sundae.png`: 사용자가 제공한 메뉴 이미지에서 메뉴명·안내 문구를 제거해 OpenAI 이미지 생성 도구로 정리한 대표 메뉴 사진 (2026-10-25).
+- `assets/menus/full-menu-board.png`: 사용자가 제공한 `물총메뉴.pdf` 1쪽에서 전체 메뉴판 부분을 추출해 웹용으로 렌더링한 이미지 (2026-10-25).
 - `assets/hero/award-kal.png`: 사용자가 제공한 히어로용 수상 안내·칼국수 이미지.
 
 ## 언론·미디어

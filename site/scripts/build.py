@@ -21,7 +21,10 @@ def menu_card(item, preview=False):
     if preview:
         return f'''<a class="menu-card preview-card" href="menu.html"><div class="menu-image">{image}</div><div class="menu-card-body"><h3>{escape(item['name'])}</h3><p>{escape(item['description'])}</p></div></a>'''
     photo = f'<div class="menu-image">{image}</div>' if image else ''
-    return f'''<article id="{item['id']}" class="menu-card catalog-card {'text-menu' if not image else ''}" data-category="{item['category']}">{photo}<div class="menu-card-body"><span class="small-label">{escape(item['english'])}</span><div class="menu-title"><h2>{escape(item['name'])}</h2><p class="price">{escape(item['price'])}<span>원</span></p></div><p>{escape(item['description'])}</p><p class="menu-note">{escape(item['note'])}</p></div></article>'''
+    return f'''<article id="{item['id']}" class="menu-card catalog-card {'text-menu' if not image else ''}" data-category="{item['category']}">{photo}<div class="menu-card-body"><div class="menu-title"><h2>{escape(item['name'])}</h2></div><p>{escape(item['description'])}</p></div></article>'''
+
+def menu_feature_cards():
+    return ''.join(menu_card(item) for item in DATA['menus'][:4])
 
 def store_cards():
     cards = []
@@ -50,7 +53,7 @@ def build():
     shutil.copytree(ROOT / 'assets', OUT / 'assets', dirs_exist_ok=True)
     base = Template((ROOT / 'templates/base.html').read_text())
     values = {k: escape(v) for k, v in DATA.items() if isinstance(v, str)}
-    values.update(year='2026', franchise_phone=escape(DATA['franchise']['phone'] or ''), franchise_phone_plain=(DATA['franchise']['phone'] or '').replace('-', ''), menu_preview=''.join(menu_card(m, True) for m in DATA['menus'][:3]), menu_cards=''.join(menu_card(m) for m in DATA['menus']), store_cards=store_cards(), store_count=str(len(DATA['stores'])), media_cards=media_cards(), franchise_contact=franchise_contact())
+    values.update(year='2026', franchise_phone=escape(DATA['franchise']['phone'] or ''), franchise_phone_plain=(DATA['franchise']['phone'] or '').replace('-', ''), menu_preview=''.join(menu_card(m, True) for m in DATA['menus'][:4]), menu_feature_cards=menu_feature_cards(), menu_cards=''.join(menu_card(m) for m in DATA['menus']), store_cards=store_cards(), store_count=str(len(DATA['stores'])), media_cards=media_cards(), franchise_contact=franchise_contact())
     count = 0
     for page, (label, title, description) in PAGES.items():
         path = ROOT / 'templates' / f'{page}.html'

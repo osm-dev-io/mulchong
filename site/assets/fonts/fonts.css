@@ -112,6 +112,31 @@
 	unicode-range: U+20-22, U+27-2a, U+2c-39, U+3a-3b, U+3f, U+41-4e, U+4f-5d, U+61-7b, U+7d, U+a0-a1, U+ab, U+ad-ae, U+b7, U+bb, U+bf, U+2013-2014, U+201c-201d, U+2122, U+ac00, U+ace0, U+ae30, U+b2e4, U+b85c, U+b9ac, U+c0ac, U+c2a4, U+c2dc, U+c774, U+c778, U+c9c0, U+d558;
 }
 
+
+
+
+/* Additional official dynamic subsets for glyphs used by this site. */
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 45 920;
+	src: url("PretendardVariable.subset.70.woff2") format('woff2-variations');
+	unicode-range: U+215b-215e,U+2162-2169,U+2170-2179,U+2195-2199,U+21b0-21b4,U+21bc,U+21c0,U+21c4-21c5,U+21cd,U+21cf-21d4,U+21e0-21e3,U+21e6-21e9,U+2200,U+2202-2203,U+2206-2209,U+220b-220c,U+220f,U+2211,U+2213,U+221a,U+221d-2220,U+2222,U+2225-2227,U+2229-222c,U+222e,U+2234-2237,U+223d,U+2243,U+2245,U+2248,U+2250-2253,U+225a,U+2260-2262,U+2264-2267,U+226a-226b,U+226e-2273,U+2276-2277,U+2279-227b,U+2280-2287,U+228a-228b,U+2295-2297,U+22a3-22a5,U+22bb-22bc,U+22ce-22cf,U+22da-22db,U+22ee-22ef,U+2306,U+2312,U+2314,U+2467-2478;
+}
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 45 920;
+	src: url("PretendardVariable.subset.77.woff2") format('woff2-variations');
+	unicode-range: U+2103,U+2463,U+25c6,U+25cb,U+266c,U+3001,U+300a,U+3046,U+304c-304d,U+304f,U+3055,U+3059,U+3063,U+3066-3068,U+306f,U+3089,U+30b8,U+30bf,U+314f,U+4e0a,U+570b,U+5730,U+5916,U+5929,U+5c71,U+5e74,U+5fc3,U+601d,U+6027,U+63d0,U+6709,U+6734,U+751f,U+7684,U+82f1,U+9053,U+91d1,U+97f3,U+ac2f,U+ac4d,U+adc4,U+ade4,U+ae41,U+ae4d-ae4e,U+aed1,U+afb9,U+b0e0,U+b299,U+b365,U+b46c,U+b480,U+b4c8,U+b7b4,U+b819,U+b918,U+baab,U+bab9,U+be8f,U+bed7,U+c0ec,U+c19f,U+c1a5,U+c3d9,U+c464,U+c53d,U+c553,U+c570,U+c5cc,U+c633,U+c6a4,U+c7a3,U+c7a6,U+c886,U+c9d9-c9da,U+c9ec,U+ca0c,U+cc21,U+cd1b,U+cd78,U+cdc4,U+cef8,U+cfe4,U+d0a5,U+d0b5,U+d0ec,U+d15d,U+d188,U+d23c,U+d2ac,U+d729,U+d79b,U+ff01,U+ff08-ff09,U+ff5c;
+}
+
 @font-face { font-family: "Source Han Serif KR"; src: url("source-han-serif-kr-regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+
+
 @font-face { font-family: "Source Han Serif KR"; src: url("source-han-serif-kr-semibold.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: swap; }
+
+
 @font-face { font-family: "Source Han Serif KR"; src: url("source-han-serif-kr-heavy.woff2") format("woff2"); font-style: normal; font-weight: 900; font-display: swap; }

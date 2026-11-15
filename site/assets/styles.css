@@ -46,6 +46,13 @@
 .home-franchise-cta .franchise-reasons li{display:flex;align-items:center;justify-content:center;min-height:90px;padding:16px;border:1px solid var(--line);font-size:.9375rem;font-weight:600;line-height:1.6}
 .home-franchise-cta .button{margin-top:36px}
 @media(max-width:640px){.home-franchise-cta h2{font-size:1.8rem;line-height:1.55}.home-franchise-cta p:not(.eyebrow){font-size:.9375rem}.home-franchise-cta .franchise-reasons{margin-top:34px}.home-franchise-cta .franchise-reasons h3{font-size:1.2rem}.home-franchise-cta .franchise-reasons ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.home-franchise-cta .franchise-reasons li{min-height:84px;padding:12px 10px;font-size:.875rem}.home-franchise-cta .button{margin-top:28px}}
+.meal-kit-section{background:#f5ede7;border-block:1px solid #e8d8cd}
+.meal-kit-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:28px 0}
+.meal-kit-label{margin-bottom:12px;color:var(--brand-red-deep);font-size:.9375rem;font-weight:650}
+.meal-kit-copy h2{font-size:2.5rem}
+.meal-kit-copy>p:last-child{margin-top:14px;color:var(--muted);line-height:1.9}
+.meal-kit-mark{display:grid;place-items:center;flex:none;width:132px;height:132px;border:1px solid #c5d1d4;border-radius:50%;color:var(--brand-red-deep);font-family:var(--serif);font-size:1.15rem;font-weight:700;line-height:1.45;text-align:center;transform:rotate(-8deg)}
+@media(max-width:640px){.meal-kit-card{gap:24px;padding:34px 26px}.meal-kit-copy h2{font-size:1.8rem}.meal-kit-copy>p:last-child{font-size:.9375rem}.meal-kit-mark{width:82px;height:82px;font-size:.8rem}}
 .franchise-hero{padding:36px 0 76px;background:var(--white)}
 .franchise-hero-copy{max-width:850px;margin:54px auto 0;text-align:center}
 .franchise-hero-copy .eyebrow{margin-bottom:18px}

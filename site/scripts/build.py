@@ -33,7 +33,19 @@ def store_cards():
         name = escape(item['name'])
         photos = ''.join(f'<img src="assets/{escape(image)}" loading="lazy" alt="{name} 매장 사진 {index}">' for index, image in enumerate(item.get('images', []), 1))
         gallery = f'<div class="store-photo-gallery" aria-label="{name} 사진">{photos}</div>' if photos else ''
-        cards.append(f'''<article class="store-list-item"><div class="store-list-top"><div class="store-list-info"><h2>{name}</h2></div><a class="store-list-link" href="{escape(item['url'])}" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 <span aria-hidden="true">↗</span></a></div>{gallery}</article>''')
+        if item.get('opening_notice'):
+            detail = f'<p class="store-opening-notice">{escape(item["opening_notice"])}</p>'
+        elif item.get('url'):
+            detail = f'<a class="store-list-link" href="{escape(item["url"])}" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 <span aria-hidden="true">↗</span></a>'
+        else:
+            detail = ''
+        cards.append(f'''<article class="store-list-item">
+  <div class="store-list-top">
+    <div class="store-list-info"><h2>{name}</h2></div>
+    {detail}
+  </div>
+  {gallery}
+</article>''')
     return ''.join(cards)
 
 def media_cards():

@@ -1,56 +1,62 @@
 'use strict';
 
-const trademarkFrame = document.querySelector('.trademark-document-frame');
-if (trademarkFrame) {
-  const image = trademarkFrame.querySelector('img');
+function revealImageWhenVisible(frame) {
+  const image = frame?.querySelector('img');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mouseMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  if (!image?.animate || !image.decode || reducedMotion.matches || !('IntersectionObserver' in window)) return;
 
-  if (!reducedMotion.matches && image.animate && 'IntersectionObserver' in window) {
-    image.decode().then(() => {
-      const headerHeight = document.querySelector('.header-inner')?.offsetHeight ?? 0;
-      const visibleThreshold = 0.6;
-      let animation = null;
+  image.decode().then(() => {
+    const headerHeight = document.querySelector('.header-inner')?.offsetHeight ?? 0;
+    const visibleThreshold = 0.6;
+    let animation = null;
 
-      function cancelReveal() {
-        animation?.cancel();
-        animation = null;
-      }
+    function cancelReveal() {
+      animation?.cancel();
+      animation = null;
+    }
 
-      function refreshVisibility() {
+    function refreshVisibility() {
+      cancelReveal();
+      observer.disconnect();
+      observer.takeRecords();
+      if (!document.hidden) observer.observe(frame);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[entries.length - 1];
+      if (document.hidden || entry.intersectionRatio < visibleThreshold) {
         cancelReveal();
-        observer.disconnect();
-        if (!document.hidden) observer.observe(trademarkFrame);
+        return;
       }
+      if (animation || reducedMotion.matches) return;
 
-      const observer = new IntersectionObserver((entries) => {
-        const entry = entries[entries.length - 1];
-        if (document.hidden || entry.intersectionRatio < visibleThreshold) {
-          cancelReveal();
-          return;
-        }
-        if (animation || reducedMotion.matches) return;
+      animation = image.animate(
+        [
+          { opacity: 0.15, translate: '0 30px', scale: 0.91, easing: 'ease-out' },
+          { opacity: 1, translate: '0 -3px', scale: 1.025, offset: 0.72, easing: 'ease-in-out' },
+          { opacity: 1, translate: '0 0', scale: 1 },
+        ],
+        { duration: 780 },
+      );
+      animation.onfinish = () => {
+        observer.disconnect();
+        document.removeEventListener('visibilitychange', refreshVisibility);
+      };
+    }, { rootMargin: `-${headerHeight}px 0px 0px`, threshold: visibleThreshold });
 
-        animation = image.animate(
-          [
-            { opacity: 0.15, translate: '0 30px', scale: 0.91, easing: 'ease-out' },
-            { opacity: 1, translate: '0 -3px', scale: 1.025, offset: 0.72, easing: 'ease-in-out' },
-            { opacity: 1, translate: '0 0', scale: 1 },
-          ],
-          { duration: 780 },
-        );
-        animation.onfinish = () => {
-          observer.disconnect();
-          document.removeEventListener('visibilitychange', refreshVisibility);
-        };
-      }, { rootMargin: `-${headerHeight}px 0px 0px`, threshold: visibleThreshold });
+    document.addEventListener('visibilitychange', refreshVisibility);
+    refreshVisibility();
+  }, () => {
+    // Keep the image unanimated if it could not be decoded.
+  });
+}
 
-      document.addEventListener('visibilitychange', refreshVisibility);
-      refreshVisibility();
-    }, () => {
-      // Keep the image unanimated if it could not be decoded.
-    });
-  }
+const trademarkFrame = document.querySelector('.trademark-document-frame');
+revealImageWhenVisible(trademarkFrame);
+revealImageWhenVisible(document.querySelector('.review-award'));
+
+if (trademarkFrame) {
+  const mouseMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
 
   trademarkFrame.addEventListener('pointermove', (event) => {
     if (!mouseMotion.matches || event.pointerType !== 'mouse') return;

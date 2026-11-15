@@ -1,5 +1,135 @@
 'use strict';
 
+const trademarkFrame = document.querySelector('.trademark-document-frame');
+if (trademarkFrame) {
+  const image = trademarkFrame.querySelector('img');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mouseMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+
+  if (!reducedMotion.matches && image.animate && 'IntersectionObserver' in window) {
+    image.decode().then(() => {
+      const headerHeight = document.querySelector('.header-inner')?.offsetHeight ?? 0;
+      const visibleThreshold = 0.6;
+      let animation = null;
+
+      function cancelReveal() {
+        animation?.cancel();
+        animation = null;
+      }
+
+      function refreshVisibility() {
+        cancelReveal();
+        observer.disconnect();
+        if (!document.hidden) observer.observe(trademarkFrame);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[entries.length - 1];
+        if (document.hidden || entry.intersectionRatio < visibleThreshold) {
+          cancelReveal();
+          return;
+        }
+        if (animation || reducedMotion.matches) return;
+
+        animation = image.animate(
+          [
+            { opacity: 0.15, translate: '0 30px', scale: 0.91, easing: 'ease-out' },
+            { opacity: 1, translate: '0 -3px', scale: 1.025, offset: 0.72, easing: 'ease-in-out' },
+            { opacity: 1, translate: '0 0', scale: 1 },
+          ],
+          { duration: 780 },
+        );
+        animation.onfinish = () => {
+          observer.disconnect();
+          document.removeEventListener('visibilitychange', refreshVisibility);
+        };
+      }, { rootMargin: `-${headerHeight}px 0px 0px`, threshold: visibleThreshold });
+
+      document.addEventListener('visibilitychange', refreshVisibility);
+      refreshVisibility();
+    }, () => {
+      // Keep the image unanimated if it could not be decoded.
+    });
+  }
+
+  trademarkFrame.addEventListener('pointermove', (event) => {
+    if (!mouseMotion.matches || event.pointerType !== 'mouse') return;
+    const { left, top, width, height } = trademarkFrame.getBoundingClientRect();
+    const x = (event.clientX - left) / width - 0.5;
+    const y = (event.clientY - top) / height - 0.5;
+    trademarkFrame.style.setProperty('--trademark-tilt-x', `${-y * 12}deg`);
+    trademarkFrame.style.setProperty('--trademark-tilt-y', `${x * 12}deg`);
+  });
+  trademarkFrame.addEventListener('pointerleave', () => {
+    trademarkFrame.style.removeProperty('--trademark-tilt-x');
+    trademarkFrame.style.removeProperty('--trademark-tilt-y');
+  });
+}
+
+const pendingReviews = new Set(document.querySelectorAll('.review-card-frame'));
+const reducedReviewMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (pendingReviews.size && !reducedReviewMotion.matches && 'IntersectionObserver' in window && Element.prototype.animate) {
+  const visibleReviews = new Set();
+  const threshold = 0.25;
+  const headerHeight = document.querySelector('.header-inner')?.offsetHeight ?? 0;
+  let activeReview = null;
+
+  function cancelReview() {
+    activeReview?.animation.cancel();
+    activeReview = null;
+  }
+
+  function revealNextReview() {
+    if (activeReview || document.hidden || reducedReviewMotion.matches) return;
+    const frame = [...pendingReviews].find((card) => visibleReviews.has(card));
+    if (!frame) return;
+
+    const animation = frame.firstElementChild.animate(
+      [
+        { opacity: 0, translate: '0 56px', scale: 0.92, easing: 'ease-out' },
+        { opacity: 1, translate: '0 -7px', scale: 1.035, offset: 0.7, easing: 'ease-in-out' },
+        { opacity: 1, translate: '0 0', scale: 1 },
+      ],
+      { duration: 700, fill: 'both' },
+    );
+    activeReview = { frame, animation };
+    animation.onfinish = () => {
+      if (activeReview?.animation !== animation) return;
+      frame.classList.remove('is-awaiting-reveal');
+      pendingReviews.delete(frame);
+      visibleReviews.delete(frame);
+      observer.unobserve(frame);
+      cancelReview();
+      if (!pendingReviews.size) document.removeEventListener('visibilitychange', refreshReviews);
+      revealNextReview();
+    };
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const { target, intersectionRatio } of entries) {
+      if (intersectionRatio >= threshold && pendingReviews.has(target)) {
+        visibleReviews.add(target);
+      } else {
+        visibleReviews.delete(target);
+        if (activeReview?.frame === target) cancelReview();
+      }
+    }
+    revealNextReview();
+  }, { rootMargin: `-${headerHeight}px 0px 0px`, threshold });
+
+  function refreshReviews() {
+    observer.disconnect();
+    observer.takeRecords();
+    cancelReview();
+    visibleReviews.clear();
+    if (!document.hidden) pendingReviews.forEach((card) => observer.observe(card));
+  }
+
+  pendingReviews.forEach((card) => card.classList.add('is-awaiting-reveal'));
+  document.addEventListener('visibilitychange', refreshReviews);
+  refreshReviews();
+}
+
 const heroCarousel = document.querySelector('[data-hero-carousel]');
 if (heroCarousel) {
   (() => {

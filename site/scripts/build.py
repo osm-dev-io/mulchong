@@ -54,6 +54,9 @@ def franchise_contact():
 
 def build():
     OUT.mkdir(exist_ok=True)
+    public = ROOT / 'public'
+    if public.is_dir():
+        shutil.copytree(public, OUT, dirs_exist_ok=True)
     shutil.copytree(ROOT / 'assets', OUT / 'assets', dirs_exist_ok=True)
     base = Template((ROOT / 'templates/base.html').read_text())
     values = {k: escape(v) for k, v in DATA.items() if isinstance(v, str)}

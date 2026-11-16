@@ -55,6 +55,8 @@ for source, parser in parsed.items():
         if parts.scheme or parts.netloc:
             continue
         target = source.parent / unquote(parts.path) if parts.path else source
+        if target.is_dir():
+            target /= 'index.html'
         if not target.is_file():
             errors.append(f'Broken local reference: {source.name} -> {ref}')
         elif parts.fragment and target in parsed and unquote(parts.fragment) not in parsed[target].ids:

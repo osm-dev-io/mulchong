@@ -102,6 +102,18 @@
 .franchise-hero-copy h1{font-size:clamp(2.5rem,5.2vw,4rem);line-height:1.45}
 .franchise-hero-copy>p:not(.eyebrow){margin-top:20px;color:var(--muted);font-size:1.0625rem;line-height:1.9}
 .franchise-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
+.franchise-hero-phone {
+  flex-wrap: wrap;
+  gap: 6px clamp(12px, 2vw, 20px);
+  min-height: 76px;
+  padding: 12px clamp(14px, 3vw, 32px);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.2;
+}
+.franchise-hero-phone strong {
+  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+  font-weight: 750;
+}
 .franchise-letter-section{background:#fff}
 .franchise-letter{max-width:940px;margin-inline:auto;padding:clamp(30px,5vw,60px);border:1px solid var(--line);border-top:3px solid var(--brand-red)}
 .franchise-letter-salutation{color:var(--brand-red-deep);font-size:.875rem;font-weight:700}
@@ -114,16 +126,11 @@
 .franchise-video-section{padding-top:70px}
 .franchise-video-heading{margin-bottom:32px;text-align:center}
 .franchise-video-heading .eyebrow{margin-bottom:14px}
-.franchise-video-heading h2,.franchise-inquiry-card h2{font-size:2.25rem}
+.franchise-video-heading h2{font-size:2.25rem}
 .franchise-video-frame{width:min(960px,100%);margin-inline:auto;aspect-ratio:16 / 9;overflow:hidden;background:#111;border:1px solid var(--line)}
 .franchise-video-frame iframe{display:block;width:100%;height:100%;border:0}
 .franchise-video-link{display:flex;width:max-content;align-items:center;gap:12px;margin:18px auto 0;color:var(--muted);font-size:.875rem}
 .franchise-video-link:hover{color:var(--ink)}
-.franchise-inquiry-section{padding-block:56px;background:var(--mist)}
-.franchise-inquiry-card{display:flex;align-items:center;justify-content:space-between;gap:30px}
-.franchise-inquiry-card .eyebrow{margin-bottom:10px}
-.franchise-inquiry-card h2{margin-bottom:8px}
-.franchise-inquiry-card p:not(.eyebrow){color:var(--muted)}
 .franchise-process-section{background:var(--mist)}
 .franchise-process-heading{margin-bottom:44px;text-align:center}
 .franchise-process-heading .eyebrow{margin-bottom:14px}
@@ -132,7 +139,7 @@
 .franchise-process-steps li{min-height:150px;border-top:1px solid #ded3c8;padding:22px 0 0}
 .franchise-process-steps li>span{font-family:var(--serif);font-size:1.75rem;color:var(--brand-red-deep)}
 .franchise-process-steps h3{font-size:1.125rem;font-weight:650;margin-top:13px}
-@media(max-width:640px){.franchise-hero{padding:24px 0 55px}.franchise-hero-copy{margin-top:35px}.franchise-hero-copy h1{font-size:2.35rem}.franchise-hero-copy>p:not(.eyebrow){font-size:.9375rem}.franchise-hero-actions{flex-direction:column;align-items:stretch}.franchise-video-section{padding-top:50px}.franchise-video-heading{margin-bottom:24px}.franchise-video-heading h2,.franchise-inquiry-card h2{font-size:1.8rem}.franchise-inquiry-card{align-items:stretch;flex-direction:column;gap:20px}.franchise-inquiry-card .button{width:100%}}
+@media(max-width:640px){.franchise-hero{padding:24px 0 55px}.franchise-hero-copy{margin-top:35px}.franchise-hero-copy h1{font-size:2.35rem}.franchise-hero-copy>p:not(.eyebrow){font-size:.9375rem}.franchise-hero-actions{flex-direction:column;align-items:stretch}.franchise-video-section{padding-top:50px}.franchise-video-heading{margin-bottom:24px}.franchise-video-heading h2{font-size:1.8rem}}
 @media(max-width:900px){.franchise-process-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 22px}.franchise-process-steps li{min-height:125px}}
 @media(max-width:640px){.franchise-process-heading{margin-bottom:30px}.franchise-process-heading h2{font-size:2rem}.franchise-process-steps{grid-template-columns:1fr;gap:0}.franchise-process-steps li{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:12px;min-height:0;padding:19px 0}.franchise-process-steps li>span{font-size:1.5rem}.franchise-process-steps h3{margin:0;font-size:1.0625rem}}
 .menu-page-heading{margin-bottom:40px;text-align:center}

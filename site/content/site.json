@@ -126,13 +126,21 @@
       "type": "가맹점",
       "url": "https://naver.me/xuFM0v4h",
       "images": [
-        "stores/yunggeonneung-01.jpeg"
+        "stores/yunggeonneung-01.jpeg",
+        "stores/yunggeonneung-02.jpeg"
       ]
     },
     {
       "name": "남양주점",
       "type": "가맹점",
-      "url": "https://naver.me/GeUQ5cu8"
+      "url": "https://naver.me/GeUQ5cu8",
+      "images": [
+        "stores/namyangju-01.jpeg",
+        "stores/namyangju-02.jpeg",
+        "stores/namyangju-03.jpeg",
+        "stores/namyangju-04.jpeg",
+        "stores/namyangju-05.jpeg"
+      ]
     },
     {
       "name": "안성점",
